@@ -3,5 +3,14 @@ module.exports = {
 	output: {
 		path: 'dist/js',
 		filename: 'bundle.js'
+	},
+	watch: true,
+	module: {
+		loaders: [
+			{
+				test: /\.scss$/,
+				loader: 'style!css!sass'
+			}
+		]
 	}
 }
