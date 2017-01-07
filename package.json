@@ -1,0 +1,23 @@
+{
+  "name": "othyn.com",
+  "version": "1.0.0",
+  "description": "Personal website located at othyn.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/othyn/othyn.com.git"
+  },
+  "keywords": [
+    "personal",
+    "website"
+  ],
+  "author": "Ben Tindall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/othyn/othyn.com/issues"
+  },
+  "homepage": "https://github.com/othyn/othyn.com#readme"
+}
