@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/othyn/othyn.com/issues"
   },
-  "homepage": "https://github.com/othyn/othyn.com#readme"
+  "homepage": "https://github.com/othyn/othyn.com#readme",
+  "devDependencies": {
+    "webpack": "^1.14.0"
+  }
 }
