@@ -1,10 +1,19 @@
+var path = require('path');
 var CWP = require('copy-webpack-plugin');
 
+var src = path.join(__dirname, 'src');
+var dist = path.join(__dirname, 'dist');
+
 module.exports = {
-	entry: './src/js/main.js',
+	context: src,
+	entry: {
+		index: './js/index.js'
+	},
 	output: {
-		path: 'dist/js',
-		filename: 'bundle.js'
+		// path: path.join(dist, 'js'), in order for live reload to work, I require html and js to be in the same dir
+		path: dist,
+		publicPath: '/',
+		filename: '[name].bundle.js'
 	},
 	watch: true,
 	module: {
@@ -18,13 +27,14 @@ module.exports = {
 	plugins: [
 		new CWP([
 			{
-				from: './src/index.html',
-				to: '..'
+				from: path.join(src, 'index.html'),
+				to: dist
 			}
 		])
 	],
 	devServer: {
-		contentBase: 'dist',
+		contentBase: dist,
+		outputPath: dist,
 		inline: true,
 		stats: 'errors-only'
 	}
