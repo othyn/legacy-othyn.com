@@ -1,3 +1,5 @@
+var CWP = require('copy-webpack-plugin');
+
 module.exports = {
 	entry: './src/js/main.js',
 	output: {
@@ -12,5 +14,13 @@ module.exports = {
 				loader: 'style!css!sass'
 			}
 		]
-	}
+	},
+	plugins: [
+		new CWP([
+			{
+				from: './src/index.html',
+				to: '..'
+			}
+		])
+	]
 }
