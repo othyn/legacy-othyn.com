@@ -22,5 +22,10 @@ module.exports = {
 				to: '..'
 			}
 		])
-	]
+	],
+	devServer: {
+		contentBase: 'dist',
+		inline: true,
+		stats: 'errors-only'
+	}
 }
