@@ -1,40 +1,48 @@
-var path = require('path');
-var CWP = require('copy-webpack-plugin');
+let PTH = require('path');
+let CWP = require('copy-webpack-plugin');
+let ETP = require("extract-text-webpack-plugin");
+let OCA = require('optimize-css-assets-webpack-plugin');
 
-var src = path.join(__dirname, 'src');
-var dist = path.join(__dirname, 'dist');
+let SRC = PTH.join(__dirname, 'src');
+let DIST = PTH.join(__dirname, 'dist');
 
 module.exports = {
-	context: src,
+	context: SRC,
 	entry: {
 		index: './js/index.js'
 	},
 	output: {
-		// path: path.join(dist, 'js'), in order for live reload to work, I require html and js to be in the same dir
-		path: dist,
+		path: DIST,
 		publicPath: '/',
-		filename: '[name].bundle.js'
+		filename: '[name].bundle.min.js'
 	},
-	watch: true,
 	module: {
 		loaders: [
 			{
+				test: /\.css$/,
+				// loader: 'style!css'
+				loader: ETP.extract("style", "css")
+			},
+			{
 				test: /\.scss$/,
-				loader: 'style!css!sass'
+				// loader: 'style!css!sass'
+				loader: ETP.extract("style", "css!sass")
 			}
 		]
 	},
 	plugins: [
 		new CWP([
 			{
-				from: path.join(src, 'index.html'),
-				to: dist
+				from: PTH.join(SRC, 'index.html'),
+				to: DIST
 			}
-		])
+		]),
+		new ETP("[name].bundle.min.css"),
+		new OCA()
 	],
 	devServer: {
-		contentBase: dist,
-		outputPath: dist,
+		contentBase: DIST,
+		outputPath: DIST,
 		inline: true,
 		stats: 'errors-only'
 	}
