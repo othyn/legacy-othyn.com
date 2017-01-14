@@ -57,7 +57,7 @@ module.exports = {
 	plugins: [
 		new CWP([
 			{
-				from: PTH.join(SRC, 'index.html'),
+				from: PTH.join(SRC, '*.html'),
 				to: DIST
 			}
 		]),
