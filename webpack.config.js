@@ -1,6 +1,6 @@
 let PTH = require('path');
 let CWP = require('copy-webpack-plugin');
-let ETP = require("extract-text-webpack-plugin");
+let ETP = require('extract-text-webpack-plugin');
 let OCA = require('optimize-css-assets-webpack-plugin');
 
 let SRC = PTH.join(__dirname, 'src');
@@ -20,13 +20,37 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.css$/,
-				// loader: 'style!css'
-				loader: ETP.extract("style", "css")
+				loader: ETP.extract(
+					'style',
+					'css!postcss'
+				)
 			},
 			{
 				test: /\.scss$/,
-				// loader: 'style!css!sass'
-				loader: ETP.extract("style", "css!sass")
+				loader: ETP.extract(
+					'style',
+					'css!postcss!sass'
+				)
+			},
+			{
+				test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'url?limit=10000&mimetype=application/font-woff'
+			},
+			{
+				test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'url?limit=10000&mimetype=application/font-woff'
+			},
+			{
+				test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'url?limit=10000&mimetype=application/octet-stream'
+			},
+			{
+				test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'file'
+			},
+			{
+				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'url?limit=10000&mimetype=image/svg+xml'
 			}
 		]
 	},
@@ -37,7 +61,7 @@ module.exports = {
 				to: DIST
 			}
 		]),
-		new ETP("[name].bundle.min.css"),
+		new ETP('[name].bundle.min.css'),
 		new OCA()
 	],
 	devServer: {
