@@ -1,4 +1,4 @@
-'use strict';
+//'use strict'; - See https://github.com/webpack/script-loader/issues/21
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11,7 +11,7 @@ var TextScramble = function () {
 		_classCallCheck(this, TextScramble);
 
 		this.el = el;
-		this.chars = '!<>-_\\/[]{}—=+*^?#________';
+		this.chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		this.update = this.update.bind(this);
 	}
 
@@ -56,7 +56,7 @@ var TextScramble = function () {
 					char = this.randomChar();
 					this.queue[i].char = char;
 				}
-				output += '<span class="dud">' + char + '</span>';
+				output += '<span class="corrupt">' + char + '</span>';
 			} else {
 				output += from;
 			}
