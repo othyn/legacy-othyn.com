@@ -1,7 +1,8 @@
 let PTH = require('path');
-let CWP = require('copy-webpack-plugin');
+let HTM = require('html-webpack-plugin');
 let ETP = require('extract-text-webpack-plugin');
 let OCA = require('optimize-css-assets-webpack-plugin');
+let FIC = require('favicons-webpack-plugin')
 
 let SRC = PTH.join(__dirname, 'src');
 let DIST = PTH.join(__dirname, 'dist');
@@ -18,6 +19,10 @@ module.exports = {
 	},
 	module: {
 		loaders: [
+			{
+				test: /\.html$/,
+				loader: 'html'
+			},
 			{
 				test: /\.css$/,
 				loader: ETP.extract(
@@ -55,14 +60,34 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CWP([
-			{
-        from: PTH.join(SRC, 'index.html'),
-				to: DIST
-			}
-		]),
 		new ETP('[name].bundle.min.css'),
-		new OCA()
+		new OCA(),
+		new HTM({
+			filename: 'index.html',
+			template: './index.html',
+			inject: true
+		}),
+		new HTM({
+			filename: 'gaming.html',
+			template: './gaming.html',
+			inject: true
+		}),
+		new HTM({
+			filename: 'portfolio.html',
+			template: './portfolio.html',
+			inject: true
+		}),
+		new HTM({
+			filename: 'studio.html',
+			template: './studio.html',
+			inject: true
+		}),
+		new FIC({
+			logo: './img/favicon.png',
+			inject: true,
+			background: '#607D8B',
+			title: 'Othyn'
+		})
 	],
 	devServer: {
 		contentBase: DIST,
