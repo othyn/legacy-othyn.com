@@ -8,3 +8,4 @@ This repo is the codebase for my website: [othyn.com](https://othyn.com)
 - Unit Tests
 - Remove dist directory
 - Implement as background / fade in after animation, using the 4 key colours: https://github.com/qrohlf/trianglify
+- Tooltips on icon hover
