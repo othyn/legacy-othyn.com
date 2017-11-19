@@ -1,5 +1,5 @@
 # othyn.com
-[![Build Status](https://semaphoreci.com/api/v1/othyn/othyn-com/branches/master/badge.svg)](https://semaphoreci.com/othyn/othyn-com)
+[![Build Status](https://semaphoreci.com/api/v1/othyn/othyn-com-v1/branches/master/badge.svg)](https://semaphoreci.com/othyn/othyn-com-v1)
 
 This repo is the codebase for my website: [othyn.com](https://othyn.com)
 
